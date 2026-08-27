@@ -147,15 +147,6 @@ namespace Rotherprivat.Copy2AlbumFolder.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Meta data..
-        /// </summary>
-        internal static string ErrorNoMetadata {
-            get {
-                return ResourceManager.GetString("ErrorNoMetadata", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to See.
         /// </summary>
         internal static string ErrorPatternOptionSeeLink {

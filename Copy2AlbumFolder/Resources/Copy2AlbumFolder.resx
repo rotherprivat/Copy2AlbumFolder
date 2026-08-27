@@ -150,9 +150,6 @@ Continue ({4}) ? </value>
   <data name="ErrorMissingDateTimeTag" xml:space="preserve">
     <value>Missing DateTime meta tag.</value>
   </data>
-  <data name="ErrorNoMetadata" xml:space="preserve">
-    <value>No Meta data.</value>
-  </data>
   <data name="ErrorPatternOptionSeeLink" xml:space="preserve">
     <value>See</value>
   </data>

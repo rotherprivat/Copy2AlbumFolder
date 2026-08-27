@@ -18,7 +18,6 @@ namespace Rotherprivat.Copy2AlbumFolder
         {
             None,
             Success,
-            ErrorNoMetadata,
             ErrorMissingDateTimeTag,
             ErrorProcessingMetaData,
             ErrorReadFile
@@ -32,14 +31,14 @@ namespace Rotherprivat.Copy2AlbumFolder
         /// <param name="file">FileInfo</param>
         /// <param name="dateTime">DateTime in local time zone or null if no meta data present</param>
         /// <returns>Result</returns>
-        internal static MetaDataResult GetDateTimeFromMeta(FileInfo file, out DateTime? dateTime)
+        internal static MetaDataResult GetDateTimeFromMetadata(FileInfo file, out DateTime? dateTime)
         {
             dateTime = null;
             try
             {
                 var metadata = ImageMetadataReader.ReadMetadata(file.FullName);
                 if (metadata == null)
-                    return MetaDataResult.ErrorNoMetadata;
+                    return MetaDataResult.ErrorMissingDateTimeTag;
 
                 if (TryGetDateTimeFromImage(metadata, out dateTime))
                     return MetaDataResult.Success;
@@ -83,7 +82,11 @@ namespace Rotherprivat.Copy2AlbumFolder
             // Calculate recording start time
             var duration = (TimeSpan?)qtDirectory?.GetObject(QuickTimeMovieHeaderDirectory.TagDuration);
             if (duration != null)
-                dateTime -= duration;
+            {
+                // Round duration to whole seconds before subtracting
+                var roundedSeconds = Math.Round(duration.Value.TotalSeconds, MidpointRounding.AwayFromZero);
+                dateTime -= TimeSpan.FromSeconds(roundedSeconds);
+            }
 
             // QuickTime Timestamp is UTC
             dateTime = dateTime?.ToLocalTime();

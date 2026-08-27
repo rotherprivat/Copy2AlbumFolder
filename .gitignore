@@ -205,4 +205,5 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-/PotensicFt/PotensicFt/Properties/launchSettings.json
+
+local/

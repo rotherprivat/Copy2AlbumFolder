@@ -149,9 +149,6 @@ Weiter ({4}) ? </value>
   <data name="ErrorMissingDateTimeTag" xml:space="preserve">
     <value>Metadaten enthalten keinen Zeitstempel.</value>
   </data>
-  <data name="ErrorNoMetadata" xml:space="preserve">
-    <value>Keine Metadaten vorhanden.</value>
-  </data>
   <data name="ErrorPatternOptionSeeLink" xml:space="preserve">
     <value>Siehe</value>
   </data>

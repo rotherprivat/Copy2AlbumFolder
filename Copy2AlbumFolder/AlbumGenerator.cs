@@ -54,7 +54,7 @@
         #endregion
 
         #region private methodes
-        private void CopySourceFolder(DirectoryInfo directory)
+        internal void CopySourceFolder(DirectoryInfo directory)
         {
             if (Recursive)
             {
@@ -70,9 +70,9 @@
             }
         }
 
-        private void CopySourceFile(FileInfo file)
+        internal void CopySourceFile(FileInfo file)
         {
-            var result = Metadata.GetDateTimeFromMeta(file, out var dateTime);
+            var result = Metadata.GetDateTimeFromMetadata(file, out var dateTime);
             switch (result)
             {
                 case Metadata.MetaDataResult.Success:
@@ -82,9 +82,6 @@
                         File.Copy(file.FullName, outputFile);
                         Out?.WriteLine($"{file.FullName}: {outputFile}");
                     }
-                    break;
-                case Metadata.MetaDataResult.ErrorNoMetadata:
-                    Out?.WriteLine($"{file.FullName}: {Resources.Copy2AlbumFolder.ErrorNoMetadata}");
                     break;
                 case Metadata.MetaDataResult.ErrorMissingDateTimeTag:
                     Out?.WriteLine($"{file.FullName}: {Resources.Copy2AlbumFolder.ErrorMissingDateTimeTag}");
@@ -100,7 +97,7 @@
             }
         }
 
-        private string? GetUniqueOutputFilePath(FileInfo sourceFile, string outputBaseName)
+        internal string? GetUniqueOutputFilePath(FileInfo sourceFile, string outputBaseName)
         {
             if (AlbumDirectory == null) 
                 throw new InvalidOperationException("AlbumDirectory can not be null");
@@ -114,26 +111,26 @@
                     return fullPath;
             }
 
-            Err?.WriteLine($"{sourceFile.FullName}: {Resources.Copy2AlbumFolder.ErrorFileIndexExceeded}");
+            Err?.WriteLine($"{sourceFile.FullName} {outputBaseName}_xx: {Resources.Copy2AlbumFolder.ErrorFileIndexExceeded}");
 
             return null;
         }
         #endregion
 
         #region properties
-        public DirectoryInfo? SourceDirectory { get; set; }
-        public DirectoryInfo? AlbumDirectory { get; set; }
-        public string? Pattern { get; set; }
-        public string? Postfix 
+        internal DirectoryInfo? SourceDirectory { get; set; }
+        internal DirectoryInfo? AlbumDirectory { get; set; }
+        internal string? Pattern { get; set; }
+        internal string? Postfix 
         {
             get => _Postfix; 
             set => _Postfix = value == null ? string.Empty : "_" + value;
         }
-        public bool Recursive { get; set; }
+        internal bool Recursive { get; set; }
 
-        public TextReader? In { get; set; }
-        public TextWriter? Out { get; set; }
-        public TextWriter? Err { get; set; }
+        internal TextReader? In { get; set; }
+        internal TextWriter? Out { get; set; }
+        internal TextWriter? Err { get; set; }
 
 
         #endregion
