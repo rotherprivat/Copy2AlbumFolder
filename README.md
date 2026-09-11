@@ -3,7 +3,8 @@
 **Copy2AlbumFolder** is a free command-line utility for consolidating image and video files from multiple source folders into a common album directory.
 
 The application copies files from a specified source folder to the selected album folder and can optionally process source folders recursively. 
-To make the resulting files easy to sort and identify, Copy2AlbumFolder uses the timestamp available in the image or video metadata to generate the output filename.
+To make the resulting files easy to sort and identify, Copy2AlbumFolder uses the timestamp available in the image or video metadata to generate 
+unique and sortable output filenames.
 
 ## Filename generation
 
