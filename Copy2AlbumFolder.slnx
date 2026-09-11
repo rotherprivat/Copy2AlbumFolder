@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Copy2AlbumFolder.Tests/Copy2AlbumFolder.Tests.csproj" />
+  <Project Path="Copy2AlbumFolder/Copy2AlbumFolder.csproj" />
+</Solution>
