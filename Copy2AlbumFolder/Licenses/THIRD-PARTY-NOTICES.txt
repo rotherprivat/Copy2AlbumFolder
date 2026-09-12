@@ -12,7 +12,7 @@ License: BSD-3-Clause Copyright: Adobe Inc.; .NET port maintained by Drew Noakes
          https://github.com/adobe/XMP-Toolkit-SDK/blob/main/LICENSE
 Source: https://github.com/drewnoakes/xmp-core-dotnet
 
-System.CommandLine: https://www.nuget.org/packages/System.CommandLine/2.0.11
+System.CommandLine: https://www.nuget.org/packages/System.CommandLine/2.0.12
 License: MIT
 Source: https://github.com/dotnet/command-line-api
 
@@ -278,7 +278,7 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ======================================================================
-System.CommandLine 2.0.11
+System.CommandLine 2.0.12
 ======================================================================
 
 License: MIT

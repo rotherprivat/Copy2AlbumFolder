@@ -45,13 +45,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Third-Party\dotNET\LICENSE.TXT">
+    <None Update="Licenses\dotNET\LICENSE.TXT">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Third-Party\dotNET\THIRD-PARTY-NOTICES.txt">
+    <None Update="Licenses\dotNET\THIRD-PARTY-NOTICES.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Third-Party\THIRD-PARTY-NOTICES.txt">
+    <None Update="Licenses\THIRD-PARTY-NOTICES.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\LICENSE" Link="Licenses\LICENSE">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
