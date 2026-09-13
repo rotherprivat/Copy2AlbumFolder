@@ -28,6 +28,12 @@ namespace Rotherprivat.Copy2AlbumFolder
                 Required = true
             };
 
+            // --log-file
+            Option<FileInfo> logFileOption = new("--log-file", "-l")
+            {
+                Description = Resources.Copy2AlbumFolder.LogFileOption
+            };
+
             // --pattern
             Option<string> patternOption = new("--pattern", "-p")
             {
@@ -82,6 +88,7 @@ namespace Rotherprivat.Copy2AlbumFolder
             [
                 sourceDirectoryOption,
                 albumDirectoryOption,
+                logFileOption,
                 patternOption,
                 postfixOption,
                 recursiveOption,
@@ -92,10 +99,11 @@ namespace Rotherprivat.Copy2AlbumFolder
 
             rootCommand.SetAction(parseResult =>
             {
-                var albumGenerator = new AlbumGenerator()
+                using var albumGenerator = new AlbumGenerator()
                 {
                     SourceDirectory = parseResult.GetValue(sourceDirectoryOption),
                     AlbumDirectory = parseResult.GetValue(albumDirectoryOption),
+                    LogFile = parseResult.GetValue(logFileOption),
                     Pattern = parseResult.GetValue(patternOption),
                     Postfix = parseResult.GetValue(postfixOption),
                     Recursive = parseResult.GetValue(recursiveOption),

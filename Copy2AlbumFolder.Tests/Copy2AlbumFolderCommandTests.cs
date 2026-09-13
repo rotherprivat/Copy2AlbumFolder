@@ -29,6 +29,43 @@ namespace Copy2AlbumFolder.Tests
         }
 
         [Fact]
+        public void LogFileOption_WhenLogFileIsNotSpecified()
+        {
+            var root = Copy2AlbumFolderCommand.BuildRootCommand();
+
+            var sourcePath = Path.Combine(TestDataDirectory, "SourceFolder");
+            var albumPath = Path.Combine(TestDataDirectory, Guid.NewGuid().ToString()); // does not exist
+            var args = new[] { "--source", sourcePath, "--album", albumPath };
+
+            var parseResult = root.Parse(args);
+            Assert.True(parseResult.Errors.Count == 0, "Expected no errors when log file is not specified.");
+
+            var logFileOption = root.Options.First(o => string.Equals(o.Name, "--log-file", StringComparison.OrdinalIgnoreCase)) as Option<FileInfo>;
+            var value = parseResult.GetValue(logFileOption) as FileInfo;
+
+            Assert.Null(value);
+        }
+
+        [Fact]
+        public void LogFileOption_WhenLogFileIsSpecified()
+        {
+            var root = Copy2AlbumFolderCommand.BuildRootCommand();
+
+            var sourcePath = Path.Combine(TestDataDirectory, "SourceFolder");
+            var albumPath = Path.Combine(TestDataDirectory, Guid.NewGuid().ToString()); // does not exist
+            var args = new[] { "--source", sourcePath, "--album", albumPath, "--log-file", "log.txt"     };
+
+            var parseResult = root.Parse(args);
+            Assert.True(parseResult.Errors.Count == 0, "Expected no errors when log file is not specified.");
+
+            var logFileOption = root.Options.First(o => string.Equals(o.Name, "--log-file", StringComparison.OrdinalIgnoreCase)) as Option<FileInfo>;
+            var value = parseResult.GetValue(logFileOption) as FileInfo;
+
+            Assert.NotNull(value);
+            Assert.True(value.FullName.EndsWith("log.txt"), "Expected log file name to be 'log.txt'.");
+        }
+
+        [Fact]
         public void PatternValidator_ReportsError_WhenPatternProducesInvalidFileName()
         {
             var root = Copy2AlbumFolderCommand.BuildRootCommand();

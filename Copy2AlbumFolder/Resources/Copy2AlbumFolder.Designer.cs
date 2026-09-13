@@ -106,16 +106,35 @@ namespace Rotherprivat.Copy2AlbumFolder.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Album Generator:
+        ///   Looks up a localized string similar to Copy2AlbumFolder:
         ///  Source folder: {0}
         ///  Album folder: {1}
-        ///  Recursive: {2}
-        ///  Outputfile example: {3}
-        ///Continue ({4}) ? .
+        ///  Log file: {2}
+        ///  Recursive: {3}
+        ///  Outputfile example: {4}
+        ///Continue ({5}) ? .
         /// </summary>
         internal static string ConfirmationText {
             get {
                 return ResourceManager.GetString("ConfirmationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not create or access the log file {0}..
+        /// </summary>
+        internal static string ErrorAccessLogFile {
+            get {
+                return ResourceManager.GetString("ErrorAccessLogFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can not create album folder {0}..
+        /// </summary>
+        internal static string ErrorCreateAlbumDirectory {
+            get {
+                return ResourceManager.GetString("ErrorCreateAlbumDirectory", resourceCulture);
             }
         }
         
@@ -188,6 +207,33 @@ namespace Rotherprivat.Copy2AlbumFolder.Resources {
         internal static string ErrorSourceDirectoryOptionNoDirectory {
             get {
                 return ResourceManager.GetString("ErrorSourceDirectoryOptionNoDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to exists.
+        /// </summary>
+        internal static string Exists {
+            get {
+                return ResourceManager.GetString("Exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write, append copy operations to log file..
+        /// </summary>
+        internal static string LogFileOption {
+            get {
+                return ResourceManager.GetString("LogFileOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to new.
+        /// </summary>
+        internal static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
             }
         }
         
