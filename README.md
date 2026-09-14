@@ -4,10 +4,8 @@
 
 The application copies files from a specified source folder to the selected album folder and can optionally process source folders recursively. 
 To make the resulting files easy to sort and identify, Copy2AlbumFolder uses the timestamp available in the image or video metadata to generate 
-unique and sortable output filenames. 
-
-Since the original filename is changed for the album, as a result, it may be difficult to get the original filename, for example if additional processing 
-is required for this file. You can use the `--log-file` option to get a mapping table. 
+unique and sortable output filenames. As a result, the original filename will be changed, and it may be difficult to recover the original filename, 
+for example, if additional processing is required for this file. You can use the `--log-file` option to get a mapping table. 
 
 ## Filename generation
 
