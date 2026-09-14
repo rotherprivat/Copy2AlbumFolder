@@ -4,7 +4,10 @@
 
 The application copies files from a specified source folder to the selected album folder and can optionally process source folders recursively. 
 To make the resulting files easy to sort and identify, Copy2AlbumFolder uses the timestamp available in the image or video metadata to generate 
-unique and sortable output filenames.
+unique and sortable output filenames. 
+
+Since the original filename is changed for the album, as a result, it may be difficult to get the original filename, for example if additional processing 
+is required for this file. You can use the `--log-file` option to get a mapping table. 
 
 ## Filename generation
 
@@ -62,7 +65,7 @@ The collision is reported to the user so that it can be identified and handled s
 
 ## Command-line interface
 
-```CMD
+```text
 
 Description:
   Merges picture folders to a common album folder and use the timestamp of the image- or video- metadata as file names,
@@ -74,18 +77,22 @@ Usage:
 Options:
   -s, --source <source> (REQUIRED)     Source folder, containing a part of the album.
   -a, --album <album> (REQUIRED)       Album folder, output folder.
+  -l, --log-file <log-file>            Write, append copy operations to log file.
   -p, --pattern <pattern>              Pattern for output file names. [default: yyyyMMdd_HHmmss]
   -x, --postfix <postfix>              Postfix of output filename.
   -r, --recursive                      Copys source files recursive.
   -y, --suppress-confirm-input, --yes  Suppresses the interactive input confirmation.
   -?, -h, --help                       Show help and usage information
   --version                            Show version information
+
 ```
 
-**Please note**: Changing the timestamp pattern can result in inappropriate file names, which may, for example, 
-make generating unique names or sorting impossible.
+**Please note**: 
 
-## Example
+* Changing the timestamp pattern can result in inappropriate file names, which may, for example, 
+make generating unique names or sorting impossible.
+* If an existing file is selected in the `--log-file` option, the logs are appended to the existing file. 
+Be aware not to accidentally change important files.
 
 ## Disclaimer
 
