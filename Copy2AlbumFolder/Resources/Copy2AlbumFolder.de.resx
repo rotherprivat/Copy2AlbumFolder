@@ -175,7 +175,7 @@ Weiter ({5}) ? </value>
     <value>vorhanden</value>
   </data>
   <data name="LogFileOption" xml:space="preserve">
-    <value>Schreibe  die Kopieraktionen an das Ende der angegebenen Protokoll-Datei.</value>
+    <value>Schreibe die Kopieraktionen an das Ende der angegebenen Protokoll-Datei.</value>
   </data>
   <data name="New" xml:space="preserve">
     <value>neu</value>
