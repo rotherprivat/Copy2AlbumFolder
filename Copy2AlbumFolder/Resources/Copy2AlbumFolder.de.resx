@@ -201,4 +201,7 @@ Weiter ({5}) ? </value>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
   </data>
+  <data name="ErrorCopyFile" xml:space="preserve">
+    <value>Fehler beim Kopieren der Datei {0}.</value>
+  </data>
 </root>

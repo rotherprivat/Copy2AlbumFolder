@@ -202,4 +202,7 @@ Continue ({5}) ? </value>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="ErrorCopyFile" xml:space="preserve">
+    <value>Failed to copy file {0}.</value>
+  </data>
 </root>

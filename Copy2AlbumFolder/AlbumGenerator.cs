@@ -69,40 +69,29 @@ namespace Rotherprivat.Copy2AlbumFolder
             if (AlbumDirectory == null)
                 throw new InvalidOperationException("AlbumDirectory can not be null");
 
-            try
-            {
-                if (!AlbumDirectory.Exists)
-                    AlbumDirectory.Create();
-                return true;    
-            }
-            catch (Exception e) when
-                (e is IOException ||
-                 e is SecurityException)
-            {
-                Err?.WriteLine(Resources.Copy2AlbumFolder.ErrorCreateAlbumDirectory, AlbumDirectory.FullName);
-                return false;
-            }
+            if (TryFileSystemAction(() => AlbumDirectory.Create()))
+                return true;
+
+            // Failed
+            Err?.WriteLine(Resources.Copy2AlbumFolder.ErrorCreateAlbumDirectory, AlbumDirectory.FullName);
+            return false;
         }
 
         internal bool ConditionallyCreateLogFile()
         {
             if (LogFile == null) return true;
             if (_LogWriter != null) return true;
-            try
+            if (TryFileSystemAction(() =>
             {
                 LogFile.Directory?.Create();
                 _LogWriter = new StreamWriter(LogFile.FullName, true);
-                return true;
-            }
-            catch (Exception e) when
-                (e is IOException ||
-                 e is SecurityException)
-            {
-                try { _LogWriter?.Dispose(); } catch { }
-                _LogWriter = null;
-                Err?.WriteLine(Resources.Copy2AlbumFolder.ErrorAccessLogFile, LogFile.FullName);
-                return false;
-            }
+            })) return true;
+
+            // Failed
+            try { _LogWriter?.Dispose(); } catch { }
+            _LogWriter = null;
+            Err?.WriteLine(Resources.Copy2AlbumFolder.ErrorAccessLogFile, LogFile.FullName);
+            return false;
         }
 
         internal void CopySourceFolder(DirectoryInfo directory)
@@ -130,8 +119,15 @@ namespace Rotherprivat.Copy2AlbumFolder
                     var outputFile = GetUniqueOutputFilePath(file, dateTime!.Value.ToString(Pattern));
                     if (outputFile != null)
                     {
-                        File.Copy(file.FullName, outputFile);
-                        Log?.WriteLine($"{file.FullName}: {outputFile}");
+                        // Copy the file to the album directory
+                        if (TryFileSystemAction(() => File.Copy(file.FullName, outputFile)))
+                        {
+                            Log?.WriteLine($"{file.FullName}: {outputFile}");
+                        }
+                        else
+                        {
+                            Err?.WriteLine(Resources.Copy2AlbumFolder.ErrorCopyFile, file.FullName);
+                        }
                     }
                     break;
                 case Metadata.MetaDataResult.ErrorMissingDateTimeTag:
@@ -165,6 +161,23 @@ namespace Rotherprivat.Copy2AlbumFolder
             Err?.WriteLine($"{sourceFile.FullName} {outputBaseName}_xx: {Resources.Copy2AlbumFolder.ErrorFileIndexExceeded}");
 
             return null;
+        }
+        #endregion
+
+        #region Private methods
+        private static bool TryFileSystemAction(Action action)
+        {
+            try
+            {
+                action();
+                return true;
+            }
+            catch (Exception e) when
+                (e is IOException ||
+                 e is SecurityException)
+            {
+                return false;
+            }
         }
         #endregion
 

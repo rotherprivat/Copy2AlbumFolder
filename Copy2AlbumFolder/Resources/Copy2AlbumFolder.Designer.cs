@@ -130,6 +130,15 @@ namespace Rotherprivat.Copy2AlbumFolder.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to copy file {0}..
+        /// </summary>
+        internal static string ErrorCopyFile {
+            get {
+                return ResourceManager.GetString("ErrorCopyFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Can not create album folder {0}..
         /// </summary>
         internal static string ErrorCreateAlbumDirectory {
