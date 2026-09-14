@@ -28,7 +28,8 @@ jobs:
         run: dotnet publish "Copy2AlbumFolder/Copy2AlbumFolder.csproj" -c Release -r win-x64 -p:IncludeSourceRevisionInInformationalVersion=false --output ./Publish/bin/win-x64
 
       - name: Pack
-        run: zip -r Publish/Copy2AlbumFolder.zip Publish/bin/
+        working-directory: ./Publish
+        run: zip -r Copy2AlbumFolder.zip bin/
 
       - name: Publish Release
         uses: softprops/action-gh-release@v3

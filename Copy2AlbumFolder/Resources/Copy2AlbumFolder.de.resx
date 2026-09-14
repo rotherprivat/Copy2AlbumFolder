@@ -120,6 +120,9 @@
   <data name="Aborted" xml:space="preserve">
     <value>Bearbeitung abgebrochen.</value>
   </data>
+  <data name="ErrorCreateAlbumDirectory" xml:space="preserve">
+    <value>Fehler beim Anlegen des Albumordners {0}.</value>
+  </data>
   <data name="AlbumDirectoryOption" xml:space="preserve">
     <value>Albumordner.</value>
   </data>
@@ -133,12 +136,16 @@
     <value>j/N</value>
   </data>
   <data name="ConfirmationText" xml:space="preserve">
-    <value>Album Generator:
+    <value>Copy2AlbumFolder:
   Quellordner: {0}
   Albumordner: {1}
-  Rekursiv: {2}
-  Beispiel für Ausgabedatei: {3}
-Weiter ({4}) ? </value>
+  Protokoll-Datei: {2}
+  Rekursiv: {3}
+  Beispiel für Ausgabedatei: {4}
+Weiter ({5}) ? </value>
+  </data>
+  <data name="ErrorAccessLogFile" xml:space="preserve">
+    <value>Fehler beim Anlegen oder beim Zugriff auf die Protokoll-Datei {0}.</value>
   </data>
   <data name="ErrorFileIndexExceeded" xml:space="preserve">
     <value>Indexnummer überschritten.</value>
@@ -164,6 +171,15 @@ Weiter ({4}) ? </value>
   <data name="ErrorSourceDirectoryOptionNoDirectory" xml:space="preserve">
     <value>Das Verzeichnis existiert nicht.</value>
   </data>
+  <data name="Exists" xml:space="preserve">
+    <value>vorhanden</value>
+  </data>
+  <data name="LogFileOption" xml:space="preserve">
+    <value>Schreibe die Kopieraktionen an das Ende der angegebenen Protokoll-Datei.</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>neu</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Nein</value>
   </data>
@@ -184,5 +200,8 @@ Weiter ({4}) ? </value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
+  </data>
+  <data name="ErrorCopyFile" xml:space="preserve">
+    <value>Fehler beim Kopieren der Datei {0}.</value>
   </data>
 </root>
