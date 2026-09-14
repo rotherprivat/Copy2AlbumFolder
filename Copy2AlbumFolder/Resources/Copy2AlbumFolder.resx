@@ -120,6 +120,9 @@
   <data name="Aborted" xml:space="preserve">
     <value>Aborted</value>
   </data>
+  <data name="ErrorCreateAlbumDirectory" xml:space="preserve">
+    <value>Can not create album folder {0}.</value>
+  </data>
   <data name="AlbumDirectoryOption" xml:space="preserve">
     <value>Album folder, output folder.</value>
   </data>
@@ -134,12 +137,16 @@
     <comment>means capital letter default N -&gt;no small letter y -&gt; yes</comment>
   </data>
   <data name="ConfirmationText" xml:space="preserve">
-    <value>Album Generator:
+    <value>Copy2AlbumFolder:
   Source folder: {0}
   Album folder: {1}
-  Recursive: {2}
-  Outputfile example: {3}
-Continue ({4}) ? </value>
+  Log file: {2}
+  Recursive: {3}
+  Outputfile example: {4}
+Continue ({5}) ? </value>
+  </data>
+  <data name="ErrorAccessLogFile" xml:space="preserve">
+    <value>Can not create or access the log file {0}.</value>
   </data>
   <data name="ErrorFileIndexExceeded" xml:space="preserve">
     <value>Index number exceeded.</value>
@@ -165,6 +172,15 @@ Continue ({4}) ? </value>
   <data name="ErrorSourceDirectoryOptionNoDirectory" xml:space="preserve">
     <value>Directory dos not exist.</value>
   </data>
+  <data name="Exists" xml:space="preserve">
+    <value>exists</value>
+  </data>
+  <data name="LogFileOption" xml:space="preserve">
+    <value>Write, append copy operations to log file.</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>new</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
   </data>
@@ -185,5 +201,8 @@ Continue ({4}) ? </value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="ErrorCopyFile" xml:space="preserve">
+    <value>Failed to copy file {0}.</value>
   </data>
 </root>
